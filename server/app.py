@@ -50,6 +50,7 @@ def delete_exercise(id):
 @app.route ('/workouts/<int:workout_id>/exercises/<int:exercise_id>/workout_exercises', methods=['POST'])
 def add_exercise_to_workout(workout_id, exercise_id):
     pass
+
 # Start the Flask server 
 if __name__ == '__main__':
     app.run(port=5555, debug=True) 
