@@ -27,17 +27,27 @@ class WorkoutExerciseSchema(Schema): # Defines data used for an exercise added t
     sets = fields.Int(required=True)
     duration_seconds = fields.Int()
     exercise = fields.Nested(ExerciseSchema, dump_only=True) # Includes exercise details when returning workout data
+    workout = fields.Nested(WorkoutSchema, dump_only=True)
 
     @validates('sets') # ensure number of sets is more than zero
     def validate_sets(self, value):
         if value <= 0:
-            raise ValidationError
-        
+            raise ValidationError("Sets must be a positive integer.")
+
+class WorkoutDetailSchema(WorkoutSchema):
+    workout_exercises = fields.Nested(WorkoutExerciseSchema, many=True, dump_only=True, exclude=('workout',))
+
+class ExerciseDetailSchema(ExerciseSchema):
+    workout_exercises = fields.Nested(WorkoutExerciseSchema, many=True, dump_only=True, exclude=('exercise',))
+    
 # Schema objects to handle single records and lists 
 exercise_schema = ExerciseSchema()
 exercises_schema = ExerciseSchema(many=True)
+exercise_detail_schema = ExerciseDetailSchema()
+
 workout_schema = WorkoutSchema()
 workouts_schema = WorkoutSchema(many=True)
-workout_exercise_schema = WorkoutExerciseSchema
+workout_detail_schema = WorkoutDetailSchema()
+workout_exercise_schema = WorkoutExerciseSchema()
 
 
