@@ -1,4 +1,4 @@
-# Defines the schemas used to convert database data to JSON
+# Defines the Marshmallow schemas used to convert database data to JSON for serialization and validation
 
 from marshmallow import Schema, fields, validates, ValidationError
 

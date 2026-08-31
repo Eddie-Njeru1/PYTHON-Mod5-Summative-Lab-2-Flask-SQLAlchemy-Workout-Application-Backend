@@ -1,4 +1,5 @@
-# 
+# Sample data for the database 
+
 from datetime import date 
 from app import app
 from models import db, Exercise, Workout, WorkoutExercise
