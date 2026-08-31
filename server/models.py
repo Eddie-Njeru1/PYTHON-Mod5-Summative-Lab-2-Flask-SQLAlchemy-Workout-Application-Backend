@@ -1,4 +1,4 @@
-# Defines the database models, relationships and validations 
+# Defines the database SQLAlchemy models, relationships, constraints and validations
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates

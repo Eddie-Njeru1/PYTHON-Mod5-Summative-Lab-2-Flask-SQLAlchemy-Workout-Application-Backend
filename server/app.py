@@ -1,4 +1,4 @@
-# Entry point for confiuring flask app and starting the server as well as defining API routes 
+# Entry point for configuring flask app and starting the server as well as defining API routes 
 
 #Import dependencies 
 from flask import Flask,request, make_response
